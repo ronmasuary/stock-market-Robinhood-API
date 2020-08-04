@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+
+  /* height: 100vh; */
+}
+
+.search-bar {
+  padding: 5vh;
+}
+
+.line-chart {
+  width: 100%;
+}
