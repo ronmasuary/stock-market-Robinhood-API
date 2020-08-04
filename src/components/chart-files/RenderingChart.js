@@ -18,7 +18,7 @@ export default function RenderingChart({ hQ, ins }) {
           return time;
         }),
       ];
-      console.log(beginAt);
+
       const symbol = hQ.symbol;
       return (
         <LineChart
