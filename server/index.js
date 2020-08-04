@@ -16,15 +16,18 @@ app.get("/search/", (req, res) => {
   let dt = { name: "", historicals: "" };
   const Robinhood = require("robinhood")(credentials, function () {
     Robinhood.historicals(symbol, "5minute", "day", function (
-      err,
+      historicalsErr,
       response,
       historicalsQuotes
     ) {
-      Robinhood.instruments(symbol, function (err, response, instrmnts) {
-        if (err) {
-          console.error(err);
+      Robinhood.instruments(symbol, function (
+        instrumentsErr,
+        response,
+        instrmnts
+      ) {
+        if (instrumentsErr || historicalsErr) {
+          res.status(500).send("error");
         } else {
-          console.log("got historicals");
           dt = { name: instrmnts, historicals: historicalsQuotes };
           if (
             !dt.historicals.symbol ||
